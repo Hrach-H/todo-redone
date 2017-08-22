@@ -6,6 +6,10 @@ const initialState = [
     {
         id: 2,
         description: 'Have a rest'
+    },
+    {
+        id: 3,
+        description: 'Go back to work'
     }
 ];
 

@@ -21,7 +21,7 @@ TodoListItem = reduxForm({
 function mapStateToProps(state) {
     return {
         initialValues: state.todos.reduce(function(acc, cur, i) {
-            acc['id_' + [i+1]] = cur.description;
+            acc['id_' + (i+1)] = cur.description;
             return acc;
         }, {})
     }
