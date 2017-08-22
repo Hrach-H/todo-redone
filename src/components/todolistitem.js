@@ -1,18 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux';
 
-class TodoListItem extends Component {
+// class TodoListItem extends Component {
+//
+//     render() {
+//         console.log(this.props);
+//         return (
+//             <li>
+//                <Field name={'id_' + this.props.id} type="text" component="input"/>
+//             </li>
+//         );
+//     }
+// }
 
-    render() {
-        console.log(this.props);
-        return (
-            <li>
-               <Field name={'id_' + this.props.id} type="text" component="input"/>
-            </li>
-        );
-    }
-}
+let TodoListItem = (props) => {
+    return (
+        <li>
+            <Field name={'id_' + props.id} type="text" component="input"/>
+        </li>
+    );
+};
 
 TodoListItem = reduxForm({
     form: 'todo'

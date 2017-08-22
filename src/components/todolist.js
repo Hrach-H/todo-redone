@@ -2,22 +2,36 @@ import React from 'react';
 import { connect } from 'react-redux';
 import TodoListItem from "./todolistitem";
 
-class TodoList extends React.Component {
-    renderTodos() {
-        return this.props.todos.map((todo) => {
+// class TodoList extends React.Component {
+//     renderTodos() {
+//         return this.props.todos.map((todo) => {
+//             return <TodoListItem key={todo.id} {...todo} />
+//         })
+//     }
+//
+//     render() {
+//         return (
+//             <ul>
+//                 {this.renderTodos()}
+//             </ul>
+//         );
+//
+//     }
+// }
+
+const TodoList = (props) => {
+    const renderTodos = (props) => {
+        return props.todos.map((todo) => {
             return <TodoListItem key={todo.id} {...todo} />
         })
-    }
+    };
 
-    render() {
-        return (
+    return (
             <ul>
-                {this.renderTodos()}
+                {renderTodos(props)}
             </ul>
         );
-
-    }
-}
+};
 
 function mapStateToProps(state) {
     return {
