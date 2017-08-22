@@ -11,17 +11,9 @@ class TodoList extends React.Component {
 
     render() {
         return (
-            <table>
-                <thead>
-                    <tr>
-                        <th>Description</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                        {this.renderTodos()}
-                </tbody>
-            </table>
+            <ul>
+                {this.renderTodos()}
+            </ul>
         );
 
     }

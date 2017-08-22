@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form'
 
-export default class TodoListItem extends React.Component {
+class TodoListItem extends Component {
+    componentWillMount() {
+        this.props.initialize({
+            description: this.props.description
+        });
+    }
+
     render() {
         return (
-            <tr>
-                <td>{this.props.description}</td>
-            </tr>
+            <li>
+               <Field name="description" type="text" component="input"/>
+            </li>
         );
     }
 }
+
+TodoListItem = reduxForm({
+    form: 'todo'
+})(TodoListItem);
+
+export default TodoListItem;
