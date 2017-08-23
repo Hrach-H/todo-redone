@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 import { store } from '../index';
 import { connect } from 'react-redux';
 import { saveTodo } from '../actions'
 
 class TodoListItem extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            id: '',
-            input: '',
+            id: props.id,
+            input: props.description,
             disabled: true
         }
     }
 
     handleChange(e) {
         this.setState({
-            id: e.target.name.substring(e.target.name.indexOf('_')+1),
             input: e.target.value,
             disabled: false
         });
@@ -29,13 +28,45 @@ class TodoListItem extends Component {
         store.dispatch(saveTodo(this.state));
     }
 
+    toggleInput() {
+        this.setState( (prevState) => {
+            if (prevState.disabled) {
+                return {
+                    disabled: !this.state.disabled
+                };
+            } else {
+                store.dispatch(reset('todo'));
+                return {
+                    disabled: true,
+                    input: prevState.input
+                };
+            }
+
+        } )
+    }
+
+    renderButtons() {
+        if (this.state.disabled) {
+            return (
+                <button onClick={this.toggleInput.bind(this)}>Edit</button>
+            );
+        } else {
+            return (
+                <span>
+                    <button onClick={this.toggleInput.bind(this)}>Cancel</button>
+                    <button onClick={this.handleClick.bind(this)} disabled={this.state.disabled}>Save</button>
+                </span>
+            );
+        }
+    }
+
 
 
     render() {
         return (
             <li>
-               <Field name={'id_' + this.props.id} type="text" component="input" onChange={this.handleChange.bind(this)}/>
-                <button onClick={this.handleClick.bind(this)} disabled={this.state.disabled}>Save</button>
+               <Field name={'id_' + this.props.id} type="text" component="input" onChange={this.handleChange.bind(this)} disabled={this.state.disabled}/>
+                {this.renderButtons()}
             </li>
         );
     }
