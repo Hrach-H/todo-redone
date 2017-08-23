@@ -15,6 +15,13 @@ const initialState = [
 
 export default function(state=initialState, action) {
     switch (action.type) {
+        case 'SAVE_TODO':
+            return state.map((todo) => {
+                if (todo.id === Number(action.payload.id)) {
+                    todo.description = action.payload.input
+                }
+                return todo;
+            });
         default:
             return state;
     }
