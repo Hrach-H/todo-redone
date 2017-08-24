@@ -1,3 +1,4 @@
+let todoIdCounter = 3;
 const initialState = [
     {
         id: 1,
@@ -15,6 +16,14 @@ const initialState = [
 
 export default function(state=initialState, action) {
     switch (action.type) {
+        case 'ADD_TODO':
+            return [
+                ...state,
+                {
+                    id: ++todoIdCounter,
+                    description: action.payload
+                }
+            ];
         case 'SAVE_TODO':
             return state.map((todo) => {
                 if (todo.id === Number(action.payload.id)) {

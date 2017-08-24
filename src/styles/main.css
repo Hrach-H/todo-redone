@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    margin-left: 0;
+}
+li {
+    margin: 5px 5px;
+}
+
+input {
+
+}
+
+button {
+    border-radius: 5px;
+    min-width: 60px;
+    min-height: 22px;
+    color: white;
+    background-color: darkcyan;
+    font-weight: bold;
+    margin-right: 2px;
+}
+

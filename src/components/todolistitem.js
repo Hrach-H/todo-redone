@@ -3,6 +3,7 @@ import { Field, reduxForm, reset } from 'redux-form';
 import { store } from '../index';
 import { connect } from 'react-redux';
 import { saveTodo } from '../actions'
+import '../styles/main.css';
 
 class TodoListItem extends Component {
     constructor(props) {

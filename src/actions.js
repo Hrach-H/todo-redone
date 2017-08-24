@@ -4,3 +4,10 @@ export const saveTodo = (todo) => {
         payload: todo
     }
 };
+
+export const addTodo = (todo) => {
+    return {
+        type: 'ADD_TODO',
+        payload: todo
+    }
+};
